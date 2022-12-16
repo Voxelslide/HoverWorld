@@ -339,6 +339,8 @@ GameObject:
   - component: {fileID: 5657371100548520325}
   - component: {fileID: 5657371100548520322}
   - component: {fileID: 5657371100548520323}
+  - component: {fileID: 7281840200874576499}
+  - component: {fileID: 1231286675521519557}
   m_Layer: 0
   m_Name: Board
   m_TagString: Board
@@ -582,6 +584,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f571b0eb-9be3-4c06-bd50-842aa0194a3d
     m_ActionName: Board/LevelOut[/XInputControllerWindows/rightStickPress]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1231286675521519557}
+        m_TargetAssemblyTypeName: JumpDropScript, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bbf9d03d-43c5-4335-9e1f-5f104db70050
+    m_ActionName: Board/Jump[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1231286675521519557}
+        m_TargetAssemblyTypeName: JumpDropScript, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c4dbb46b-938a-41a2-8718-036d2ea4c35a
+    m_ActionName: Board/Drop[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Board
@@ -616,6 +650,39 @@ MonoBehaviour:
   FRCorner: {fileID: 5657371099793347392}
   BLCorner: {fileID: 5657371100758450908}
   BRCorner: {fileID: 5657371099880178463}
+--- !u!114 &7281840200874576499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100548520344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6b3f22a19d28040af94aa150b0fec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meterValue: 0
+  meterMax: 100
+  jumpValue: 10000
+  dropValue: 10000
+  boardBoostCooldown: 20
+  boardBoostDuration: 10
+  boardBoostValue: 2000
+--- !u!114 &1231286675521519557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100548520344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1061641b2d3b424bac88d2d403af665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpValue: 10000
+  dropValue: 10000
 --- !u!1 &5657371100758450908
 GameObject:
   m_ObjectHideFlags: 0

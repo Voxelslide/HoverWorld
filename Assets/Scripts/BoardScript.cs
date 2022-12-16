@@ -115,19 +115,6 @@ public class BoardScript : MonoBehaviour
 		BoostPadBoost();
 
 
-		//FlyUp
-		if (flyUpBool)
-		{
-			boardRB.AddForce(new Vector3(0, flyUpValue, 0), ForceMode.Force);
-			//Debug.Log("Up");
-		}
-
-		//FlyDown
-		if (flyDownBool)
-		{
-			boardRB.AddForce(new Vector3(0, -flyDownValue, 0), ForceMode.Force);
-			//Debug.Log("Down");
-		}
 
 		//Restrict x and z rotation to be within 80 degrees.
 		DontFlip();
@@ -194,14 +181,10 @@ public class BoardScript : MonoBehaviour
 		if (ctx.performed)
 		{
 			StartCoroutine(LevelOut(this.transform, Quaternion.Euler(0f, transform.eulerAngles.y, 0f), 0.5f));
-			
 		}
 	}
 
- 
- 
- 
-private System.Collections.IEnumerator LevelOut(Transform target, Quaternion rot, float dur)
+	private System.Collections.IEnumerator LevelOut(Transform target, Quaternion rot, float dur)
 	{
 		float t = 0f;
 		Quaternion start = target.rotation;
@@ -213,6 +196,7 @@ private System.Collections.IEnumerator LevelOut(Transform target, Quaternion rot
 		}
 		target.rotation = rot;
 	}
+
 
 
 	//board boost

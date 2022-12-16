@@ -23,17 +23,17 @@
                 },
                 {
                     "name": "FlyUp",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "9c5547cf-bf30-4ea4-9bfc-d6f2a0f4f23d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "FlyDown",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ce31a3ce-5e20-495a-ac6a-89cb84b53552",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 },
@@ -41,6 +41,22 @@
                     "name": "BoardBoost",
                     "type": "Button",
                     "id": "024e8409-fc93-4551-bb1a-cbfde778558f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "bbf9d03d-43c5-4335-9e1f-5f104db70050",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "c4dbb46b-938a-41a2-8718-036d2ea4c35a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -66,21 +82,10 @@
                 {
                     "name": "",
                     "id": "af7586ac-5e70-4d56-91cc-10d6d25ed56f",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "Press(pressPoint=0.05,behavior=2)",
-                    "processors": "",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "AxisDeadzone,Clamp,Normalize(min=0.7,max=1)",
                     "groups": "Gamepad",
-                    "action": "FlyUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0ce4906c-f278-446f-8aa0-48c13674b128",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Press(pressPoint=0.05,behavior=2)",
-                    "processors": "",
-                    "groups": "Keyboard",
                     "action": "FlyUp",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -88,21 +93,10 @@
                 {
                     "name": "",
                     "id": "eccb39c2-ab18-4ce2-89cc-099c55874099",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "Press(pressPoint=0.05,behavior=2)",
-                    "processors": "",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "AxisDeadzone,Normalize(max=1)",
                     "groups": "Gamepad",
-                    "action": "FlyDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c4ee3f5-de74-484d-a6ef-57dfa00a2c91",
-                    "path": "<Keyboard>/q",
-                    "interactions": "Press(pressPoint=0.05,behavior=2)",
-                    "processors": "",
-                    "groups": "Keyboard",
                     "action": "FlyDown",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -253,11 +247,55 @@
                 {
                     "name": "",
                     "id": "5baf83ca-6b71-42a1-a3a1-451d253e81cb",
-                    "path": "<Gamepad>/rightStickPress",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "LevelOut",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cae92441-a160-4029-9042-10ea79a85920",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9a68349-ac56-4e0d-b944-b21244fdd8b1",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ce4906c-f278-446f-8aa0-48c13674b128",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press(pressPoint=0.05,behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c4ee3f5-de74-484d-a6ef-57dfa00a2c91",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press(pressPoint=0.05,behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
