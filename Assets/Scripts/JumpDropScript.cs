@@ -7,12 +7,19 @@ public class JumpDropScript : MonoBehaviour
 {
 	
 	private Rigidbody boardRB;
-
+	private ActionMeterScript boardActionMeter;
 
 	[SerializeField]
 	private float jumpValue = 10000;
 	[SerializeField]
+	private int requiredMeterToJump = 25;
+
+	[SerializeField]
 	private float dropValue = 10000;
+	[SerializeField]
+	private int requiredMeterToDrop = 25;
+
+
 
 	//Values that are given by Inputs, stored, and then applied during FixedUpdate
 	bool jumpBool = false;
@@ -22,6 +29,7 @@ public class JumpDropScript : MonoBehaviour
 	private void Awake()
 	{
 		boardRB = GetComponent<Rigidbody>();
+		boardActionMeter = GetComponent<ActionMeterScript>();
 	}
 
 	private void FixedUpdate()
@@ -41,9 +49,10 @@ public class JumpDropScript : MonoBehaviour
 	//Jump and Drop
 	public void Jump(InputAction.CallbackContext ctx)
 	{
-		if (ctx.performed)
+		if (ctx.performed && boardActionMeter.GetMeterValue() >=  requiredMeterToJump)
 		{
 			jumpBool = true;
+			boardActionMeter.DecrementMeterValue(requiredMeterToJump);
 			//Debug.Log("jumpBool: " + jumpBool);
 		}
 		else
@@ -56,13 +65,14 @@ public class JumpDropScript : MonoBehaviour
 
 	public void Drop(InputAction.CallbackContext ctx)
 	{
-		if (ctx.performed)
+		if (ctx.performed && boardActionMeter.GetMeterValue() >= requiredMeterToDrop)
 		{
 			dropBool = true;
+			boardActionMeter.DecrementMeterValue(requiredMeterToDrop);
+			//Debug.Log("dropBool: " + dropBool);
 		}
 		else dropBool = false;
-		Debug.Log("dropBool: " + dropBool);
-		Debug.Log(ctx);
+		//Debug.Log(ctx);
 	}
 
 	private void JumpForce()
@@ -78,4 +88,6 @@ public class JumpDropScript : MonoBehaviour
 		Debug.Log("Drop");
 		dropBool = false;
 	}
+
+
 }

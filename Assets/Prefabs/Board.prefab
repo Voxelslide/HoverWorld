@@ -1,5 +1,88 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4694782238463221786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3746261663510340254}
+  - component: {fileID: 1283969603576449181}
+  - component: {fileID: 7178296593152738823}
+  m_Layer: 0
+  m_Name: Camera Focus Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3746261663510340254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694782238463221786}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
+  m_LocalScale: {x: 0.25, y: 1, z: 0.125}
+  m_Children:
+  - {fileID: 5657371100083626274}
+  m_Father: {fileID: 5657371100548520324}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1283969603576449181
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694782238463221786}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7178296593152738823
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694782238463221786}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5657371099793347392
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,6 +155,7 @@ GameObject:
   - component: {fileID: 5657371100083626277}
   - component: {fileID: 5657371100083626276}
   - component: {fileID: 5613185200011852455}
+  - component: {fileID: 8478503795566137805}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -86,11 +170,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5657371100083626279}
-  m_LocalRotation: {x: 0.056692794, y: 0, z: 0, w: 0.99839175}
-  m_LocalPosition: {x: 0, y: 8, z: -1.75}
+  m_LocalRotation: {x: 0.056692794, y: -0, z: -0, w: 0.99839175}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5657371100548520324}
+  m_Father: {fileID: 3746261663510340254}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 6.5, y: 0, z: 0}
 --- !u!20 &5657371100083626277
@@ -176,6 +260,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &8478503795566137805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100083626279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3603ab3de8bd24bbbcf95287074f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 3746261663510340254}
 --- !u!1 &5657371100309244226
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +438,7 @@ GameObject:
   - component: {fileID: 5657371100548520323}
   - component: {fileID: 7281840200874576499}
   - component: {fileID: 1231286675521519557}
+  - component: {fileID: 1675595703322774916}
   m_Layer: 0
   m_Name: Board
   m_TagString: Board
@@ -359,7 +457,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 4.7348404, z: -4.6}
   m_LocalScale: {x: 1, y: 0.25, z: 2}
   m_Children:
-  - {fileID: 5657371100083626274}
+  - {fileID: 3746261663510340254}
   - {fileID: 5657371101542105056}
   - {fileID: 5657371099793347393}
   - {fileID: 5657371100758450909}
@@ -633,19 +731,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef168085d7ad394596b907c5d57a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationLimit: 80
   speed: 250
   turnTorque: 750
   pitchTorque: 500
   rollTorque: 100
   levelOutTorque: 100
   floatMultiplier: 50
-  flyUpValue: 12000
-  flyDownValue: 4990
   centerForce: 8
   tooLowCenterForce: 200
-  boardBoostCooldown: 20
-  boardBoostDuration: 2
-  boardBoostValue: 3000
   FLCorner: {fileID: 5657371101542105059}
   FRCorner: {fileID: 5657371099793347392}
   BLCorner: {fileID: 5657371100758450908}
@@ -664,11 +758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meterValue: 0
   meterMax: 100
-  jumpValue: 10000
-  dropValue: 10000
-  boardBoostCooldown: 20
-  boardBoostDuration: 10
-  boardBoostValue: 2000
 --- !u!114 &1231286675521519557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,8 +770,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1061641b2d3b424bac88d2d403af665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpValue: 10000
-  dropValue: 10000
+  jumpValue: 12000
+  requiredMeterToJump: 25
+  dropValue: 11000
+  requiredMeterToDrop: 25
+--- !u!114 &1675595703322774916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100548520344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f1b670e20dc4e4a8cef16de9cc9da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostDuration: 1
+  boardBoostValue: 9000
+  requiredMeterToBoost: 25
 --- !u!1 &5657371100758450908
 GameObject:
   m_ObjectHideFlags: 0

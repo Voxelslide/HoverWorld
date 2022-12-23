@@ -9,6 +9,7 @@ public class BoardScript : MonoBehaviour
 
 	private Rigidbody boardRB;
 	private float gravity = -1f;
+	[SerializeField]
 	private float rotationLimit = 80f;
 
 	[SerializeField]
@@ -20,13 +21,7 @@ public class BoardScript : MonoBehaviour
 	[SerializeField]
 	private float rollTorque = 100;
 	[SerializeField]
-	private float levelOutTorque = 100;
-	[SerializeField]
 	private float floatMultiplier = 50;
-	[SerializeField]
-	private float flyUpValue = 12000;
-	[SerializeField]
-	private float flyDownValue = 4990;
 	[SerializeField]
 	private float centerForce = 8f;
 	[SerializeField]
@@ -40,28 +35,10 @@ public class BoardScript : MonoBehaviour
 	private float boostPadDuration;
 	private float boostPadValue = 1f;
 
-	//boardBoost internal values
-	private bool canBoardBoost = true; //For later if I want to disable boosting
-
-	[SerializeField]
-	private float boardBoostCooldown = 20;
-	private float boardBoostCooldownCounter = 20;
-
-	[SerializeField]
-	private float boardBoostDuration = 10;
-	private float boardBoostDurationCounter = 0;
-	//boardBoostDurationCounter = the counter that keeps track of the time passed since last boost. When starting a boardBoost, it starts counting down.
-	//If a boardBoostCheck sees that the countdown is <= 0 (on a button press), it sets the coutdown = cooldown, which is the condition boardBoost checks in fixedUpdate order to begin
-	
-	[SerializeField]
-	private float boardBoostValue = 2000;
-
 
 	//Values that are given by Inputs, stored, and then applied during FixedUpdate
 	private float forwardInput;
 	private float torqueDirection;
-	private bool flyUpBool;
-	private bool flyDownBool;
 
 	//corner Object references
 	[SerializeField]
@@ -107,9 +84,6 @@ public class BoardScript : MonoBehaviour
 		//RotatePitchRoll
 		boardRB.AddTorque(pitchChange * pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
 		boardRB.AddTorque(rollChange * rollTorque * gameObject.transform.forward, ForceMode.Force); //roll
-
-		//boardBoost
-		BoardBoost();
 		
 		//boostPad movement
 		BoostPadBoost();
@@ -147,28 +121,6 @@ public class BoardScript : MonoBehaviour
 		//Debug.Log("Move: " + ctx);
 	}
 
-	public void FlyUp(InputAction.CallbackContext ctx)
-	{
-		if (ctx.performed)
-		{
-			flyUpBool = true;
-		}
-		else flyUpBool = false;
-		//Debug.Log("FlyUpBool: " + flyUpBool);
-		//Debug.Log(ctx);
-	}
-
-	public void FlyDown(InputAction.CallbackContext ctx)
-	{
-		if (ctx.performed)
-		{
-			flyDownBool = true;
-		}
-		else flyDownBool = false;
-		//Debug.Log("FlyUpBool: " + flyDownBool);
-		//Debug.Log(ctx);
-	}
-
 	public void RotatePitchRoll(InputAction.CallbackContext ctx)
 	{
 		Vector2 input = ctx.ReadValue<Vector2>();
@@ -196,40 +148,6 @@ public class BoardScript : MonoBehaviour
 		}
 		target.rotation = rot;
 	}
-
-
-
-	//board boost
-	public void BoardBoostCheck(InputAction.CallbackContext ctx)
-	{
-		Debug.Log("BoardBoostCheck");
-		if (ctx.started && canBoardBoost && boardBoostDurationCounter <= 0 && boardBoostCooldownCounter >= boardBoostCooldown) //if board is not boosting and the cooldown is over
-		{
-			Debug.Log("BoardBoost START");
-			boardBoostDurationCounter = boardBoostDuration;
-			boardBoostCooldownCounter = 0;
-		}
-	}
-
-	private void BoardBoost()
-	{
-		if (boardBoostDurationCounter > 0) //boardBoosts if the countdown hasn't run out yet
-		{
-			boardBoostDurationCounter -= 0.1f;
-			boardRB.AddForce(boardBoostValue * gameObject.transform.forward, ForceMode.Impulse);
-
-			//increase camera field of view to 90 when boosting
-			//if(boardCamera.fieldOfView < 90.0f) boardCamera.fieldOfView += 2.5f;
-
-			//Debug.Log("Boosting with: " + boardBoostDurationCounter + " left.");
-		}
-		if(boardBoostCooldownCounter < boardBoostCooldown) //if boardBoost duration is over, then start refreshing the cooldown (if it's not already == the total cooldown)
-		{
-			boardBoostCooldownCounter += 0.1f;
-			//if(boardCamera.fieldOfView > 75.0f) boardCamera.fieldOfView -= 2.5f; //camera FOV only goes to this # and then stays there, unless you change the > / < and like everything else
-		}
-	}
-
 
 
 	/*

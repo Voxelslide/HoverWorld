@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "BoardBoost",
+                    "name": "Boost",
                     "type": "Button",
                     "id": "024e8409-fc93-4551-bb1a-cbfde778558f",
                     "expectedControlType": "Button",
@@ -218,7 +218,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "BoardBoost",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -229,7 +229,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "BoardBoost",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -259,7 +259,7 @@
                     "name": "",
                     "id": "cae92441-a160-4029-9042-10ea79a85920",
                     "path": "<Gamepad>/buttonNorth",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
@@ -270,7 +270,7 @@
                     "name": "",
                     "id": "a9a68349-ac56-4e0d-b944-b21244fdd8b1",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Drop",
