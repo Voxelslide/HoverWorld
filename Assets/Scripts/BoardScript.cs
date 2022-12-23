@@ -5,36 +5,23 @@ using UnityEngine.InputSystem;
 
 public class BoardScript : MonoBehaviour
 {
-	private Camera boardCamera;
-
 	private Rigidbody boardRB;
 	private float gravity = -1f;
-	[SerializeField]
-	private float rotationLimit = 80f;
-
+	
 	[SerializeField]
 	private float speed = 250;
 	[SerializeField]
 	private float turnTorque = 750;
 	[SerializeField]
-	private float pitchTorque = 500;
-	[SerializeField]
 	private float rollTorque = 100;
+	[SerializeField]
+	private float rotationLimit = 80f;
 	[SerializeField]
 	private float floatMultiplier = 50;
 	[SerializeField]
 	private float centerForce = 8f;
 	[SerializeField]
 	private float tooLowCenterForce = 50f;
-
-	private float pitchChange;
-	private float rollChange;
-
-
-	//boostPad internal values
-	private float boostPadDuration;
-	private float boostPadValue = 1f;
-
 
 	//Values that are given by Inputs, stored, and then applied during FixedUpdate
 	private float forwardInput;
@@ -56,10 +43,6 @@ public class BoardScript : MonoBehaviour
 		corners[1] = FRCorner.transform;
 		corners[2] = BLCorner.transform;
 		corners[3] = BRCorner.transform;
-
-		//this just makes the camera easier/shorter to reference
-		boardCamera = gameObject.GetComponentInChildren<Camera>();
-		Debug.Log(boardCamera);
 	}
 
 
@@ -67,7 +50,6 @@ public class BoardScript : MonoBehaviour
 	{
 		ApplyGravity();
 		
-
 		//CornerHover
 		for (int i = 0; i < 4; i++)
 		{
@@ -79,23 +61,14 @@ public class BoardScript : MonoBehaviour
 
 		//Turning/Torque
 		boardRB.AddTorque(torqueDirection * turnTorque * gameObject.transform.up, ForceMode.Force);
+		boardRB.AddTorque(-torqueDirection * rollTorque * gameObject.transform.forward, ForceMode.Force); //roll  
 
-
-		//RotatePitchRoll
-		boardRB.AddTorque(pitchChange * pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
-		boardRB.AddTorque(rollChange * rollTorque * gameObject.transform.forward, ForceMode.Force); //roll
-		
 		//boostPad movement
 		BoostPadBoost();
-
-
 
 		//Restrict x and z rotation to be within 80 degrees.
 		DontFlip();
 
-
-		//Debug.Log("X: " + gameObject.transform.eulerAngles.x);
-		//Debug.Log("Z: " + gameObject.transform.eulerAngles.z);
 	}
 
 	private void Update()
@@ -107,25 +80,15 @@ public class BoardScript : MonoBehaviour
 	}
 
 
-
 	//Board Movement
 	public void ForwardMovement(InputAction.CallbackContext ctx)
 	{
 		forwardInput = ctx.ReadValue<float>();
-		//Debug.Log("Forward Input: " + ctx);
 	}
 
 	public void Turning(InputAction.CallbackContext ctx)
 	{
 		torqueDirection = ctx.ReadValue<float>();
-		//Debug.Log("Move: " + ctx);
-	}
-
-	public void RotatePitchRoll(InputAction.CallbackContext ctx)
-	{
-		Vector2 input = ctx.ReadValue<Vector2>();
-		rollChange = -input.x;
-		pitchChange = input.y;
 	}
 
 	public void LevelOut(InputAction.CallbackContext ctx)
@@ -147,39 +110,6 @@ public class BoardScript : MonoBehaviour
 			t += Time.deltaTime;
 		}
 		target.rotation = rot;
-	}
-
-
-	/*
-	 If I wanted to make it to where you can't board boost and boost pad boost,
-	include a check in boost pad boost that checks to see if the boardBoostCooldownCounter is > like 10% of cooldown or something (1/10 of cooldown has passed, whatever that comes out to)
-	so that it waits an appropriate time between boardBoost and boostPadBoost,
-	and if true, don't do boost pad boost
-	also, have a check in boardBoost that checks if boostPadDuration is >0, and if true don't boardBoost
-	 */
-
-
-
-
-	//boost pad
-	public void BoostPadStart(float padValue, float padDuration)
-	{
-		boostPadValue = padValue;
-		boostPadDuration = padDuration;
-	}
-
-	private void BoostPadBoost()
-	{
-		if (boostPadDuration < 0)
-		{
-			boostPadDuration = 0;
-			boostPadValue = 1;
-		}
-		if (boostPadDuration > 0)
-		{
-			boostPadDuration -= 0.1f;
-			boardRB.AddForce(Vector3.Scale(new Vector3(boostPadValue, 0, boostPadValue), gameObject.transform.forward) * forwardInput, ForceMode.Impulse);
-		}
 	}
 
 	//Board floating/ gravity/ not flipping
@@ -238,4 +168,31 @@ public class BoardScript : MonoBehaviour
 		//Apply changes
 		transform.rotation = Quaternion.Euler(playerEulerAngles);
 	}
+
+
+	//boostPad internal values
+	private float boostPadDuration;
+	private float boostPadValue = 1f;
+
+	//boost pad
+	public void BoostPadStart(float padValue, float padDuration)
+	{
+		boostPadValue = padValue;
+		boostPadDuration = padDuration;
+	}
+
+	private void BoostPadBoost()
+	{
+		if (boostPadDuration < 0)
+		{
+			boostPadDuration = 0;
+			boostPadValue = 1;
+		}
+		if (boostPadDuration > 0)
+		{
+			boostPadDuration -= 0.1f;
+			boardRB.AddForce(Vector3.Scale(new Vector3(boostPadValue, 0, boostPadValue), gameObject.transform.forward) * forwardInput, ForceMode.Impulse);
+		}
+	}
+
 }

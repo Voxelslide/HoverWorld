@@ -20,6 +20,9 @@ public class JumpDropScript : MonoBehaviour
 	private int requiredMeterToDrop = 25;
 
 
+	[SerializeField]
+	private float pitchTorque = 3500;
+
 
 	//Values that are given by Inputs, stored, and then applied during FixedUpdate
 	bool jumpBool = false;
@@ -53,14 +56,11 @@ public class JumpDropScript : MonoBehaviour
 		{
 			jumpBool = true;
 			boardActionMeter.DecrementMeterValue(requiredMeterToJump);
-			//Debug.Log("jumpBool: " + jumpBool);
 		}
 		else
 		{
 			jumpBool = false;
-			//Debug.Log("jumpBool: " + jumpBool);
 		}
-		//Debug.Log(ctx);
 	}
 
 	public void Drop(InputAction.CallbackContext ctx)
@@ -69,15 +69,14 @@ public class JumpDropScript : MonoBehaviour
 		{
 			dropBool = true;
 			boardActionMeter.DecrementMeterValue(requiredMeterToDrop);
-			//Debug.Log("dropBool: " + dropBool);
 		}
 		else dropBool = false;
-		//Debug.Log(ctx);
 	}
 
 	private void JumpForce()
 	{
 		boardRB.AddForce(new Vector3(0, jumpValue, 0), ForceMode.Impulse);
+		boardRB.AddTorque(-pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
 		Debug.Log("Jump");
 		jumpBool = false;
 	}
@@ -85,6 +84,7 @@ public class JumpDropScript : MonoBehaviour
 	private void DropForce()
 	{
 		boardRB.AddForce(new Vector3(0, -dropValue, 0), ForceMode.Impulse);
+		boardRB.AddTorque(pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
 		Debug.Log("Drop");
 		dropBool = false;
 	}

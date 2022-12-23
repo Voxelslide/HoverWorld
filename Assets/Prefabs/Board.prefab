@@ -735,8 +735,7 @@ MonoBehaviour:
   speed: 250
   turnTorque: 750
   pitchTorque: 500
-  rollTorque: 100
-  levelOutTorque: 100
+  rollTorque: 75
   floatMultiplier: 50
   centerForce: 8
   tooLowCenterForce: 200

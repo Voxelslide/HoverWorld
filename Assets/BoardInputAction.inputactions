@@ -62,14 +62,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "RotatePitchRoll",
-                    "type": "Value",
-                    "id": "75527b77-b6fc-444f-a505-900aaca33fb1",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "LevelOut",
                     "type": "Button",
                     "id": "f571b0eb-9be3-4c06-bd50-842aa0194a3d",
@@ -230,17 +222,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8b38895e-de09-403f-be29-6fb4c8ba32c9",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "RotatePitchRoll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -21,7 +21,6 @@ public class UIScript : MonoBehaviour
 		boardActionMeter= boardReference.GetComponent<ActionMeterScript>();
 	}
 
-	// Update is called once per frame
 	void Update()
     {
 			speedTextObject.text = "Speed: " + Mathf.Round(boardRigidbody.velocity.magnitude * 100) / 100;
