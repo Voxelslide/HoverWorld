@@ -55,7 +55,6 @@ public class JumpDropScript : MonoBehaviour
 		if (ctx.performed && boardActionMeter.GetMeterValue() >=  requiredMeterToJump)
 		{
 			jumpBool = true;
-			boardActionMeter.DecrementMeterValue(requiredMeterToJump);
 		}
 		else
 		{
@@ -68,7 +67,6 @@ public class JumpDropScript : MonoBehaviour
 		if (ctx.performed && boardActionMeter.GetMeterValue() >= requiredMeterToDrop)
 		{
 			dropBool = true;
-			boardActionMeter.DecrementMeterValue(requiredMeterToDrop);
 		}
 		else dropBool = false;
 	}
@@ -76,16 +74,18 @@ public class JumpDropScript : MonoBehaviour
 	private void JumpForce()
 	{
 		boardRB.AddForce(new Vector3(0, jumpValue, 0), ForceMode.Impulse);
-		boardRB.AddTorque(-pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
-		Debug.Log("Jump");
+		boardActionMeter.SubtractMeter(requiredMeterToJump);
+		//boardRB.AddTorque(-pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
+		//Debug.Log("Jump");
 		jumpBool = false;
 	}
 
 	private void DropForce()
 	{
 		boardRB.AddForce(new Vector3(0, -dropValue, 0), ForceMode.Impulse);
-		boardRB.AddTorque(pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
-		Debug.Log("Drop");
+		boardActionMeter.SubtractMeter(requiredMeterToDrop);
+		//boardRB.AddTorque(pitchTorque * gameObject.transform.right, ForceMode.Force); //pitch
+		//Debug.Log("Drop");
 		dropBool = false;
 	}
 

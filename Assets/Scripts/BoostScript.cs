@@ -32,8 +32,8 @@ public class BoostScript : MonoBehaviour
 		Debug.Log("BoardBoostCheck");
 		if (ctx.performed && boardActionMeter.GetMeterValue() >= requiredMeterToBoost) //check for available meter here
 		{
-			boardActionMeter.DecrementMeterValue(requiredMeterToBoost);
-			//Debug.Log("Boost START");
+			boardActionMeter.SubtractMeter(requiredMeterToBoost);
+			Debug.Log("Boost START");
 			StartCoroutine(Boost());
 		}
 	}

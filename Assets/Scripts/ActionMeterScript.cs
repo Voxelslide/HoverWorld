@@ -20,9 +20,21 @@ public class ActionMeterScript : MonoBehaviour
 		return meterValue;
 	}
 
-	public void DecrementMeterValue(int decrementAmount) {
-		if (meterValue > decrementAmount) {
+
+	public void AddMeter(int addAmount)
+	{
+		Debug.Log("Meter: " + meterValue);
+		meterValue += addAmount;
+		if (meterValue > meterMax) meterValue = meterMax;
+		Debug.Log("New Meter Amount: " + meterValue);
+	}
+
+
+	public void SubtractMeter(int decrementAmount) {
+		Debug.Log("Meter: " +meterValue);
+		if (meterValue >= decrementAmount) {
 			meterValue -= decrementAmount;
+			Debug.Log("Remaining Meter: " + meterValue);
 		}
 	}
 	

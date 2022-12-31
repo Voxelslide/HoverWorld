@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 7281840200874576499}
   - component: {fileID: 1231286675521519557}
   - component: {fileID: 1675595703322774916}
+  - component: {fileID: 9198448339788072167}
   m_Layer: 0
   m_Name: Board
   m_TagString: Board
@@ -571,35 +572,11 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5657371100548520323}
-        m_TargetAssemblyTypeName: BoardScript, Assembly-CSharp
-        m_MethodName: FlyUp
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 9c5547cf-bf30-4ea4-9bfc-d6f2a0f4f23d
     m_ActionName: Board/New action
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5657371100548520323}
-        m_TargetAssemblyTypeName: BoardScript, Assembly-CSharp
-        m_MethodName: FlyDown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: ce31a3ce-5e20-495a-ac6a-89cb84b53552
     m_ActionName: Board/FlyDown
   - m_PersistentCalls:
@@ -654,22 +631,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5657371100548520323}
         m_TargetAssemblyTypeName: BoardScript, Assembly-CSharp
-        m_MethodName: RotatePitchRoll
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 75527b77-b6fc-444f-a505-900aaca33fb1
-    m_ActionName: Board/RotatePitchRoll[/XInputControllerWindows/rightStick]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5657371100548520323}
-        m_TargetAssemblyTypeName: BoardScript, Assembly-CSharp
         m_MethodName: LevelOut
         m_Mode: 0
         m_Arguments:
@@ -714,6 +675,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c4dbb46b-938a-41a2-8718-036d2ea4c35a
     m_ActionName: Board/Drop[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9198448339788072167}
+        m_TargetAssemblyTypeName: TrickScript, Assembly-CSharp
+        m_MethodName: DoTrick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 17b24e16-033c-447e-bf97-1beec5c402aa
+    m_ActionName: Board/Trick[/XInputControllerWindows/rightStick/x,/XInputControllerWindows/rightStick/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Board
@@ -731,11 +708,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef168085d7ad394596b907c5d57a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationLimit: 80
   speed: 250
   turnTorque: 750
-  pitchTorque: 500
   rollTorque: 75
+  rotationLimit: 80
   floatMultiplier: 50
   centerForce: 8
   tooLowCenterForce: 200
@@ -773,6 +749,7 @@ MonoBehaviour:
   requiredMeterToJump: 25
   dropValue: 11000
   requiredMeterToDrop: 25
+  pitchTorque: 3500
 --- !u!114 &1675595703322774916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +765,18 @@ MonoBehaviour:
   boostDuration: 1
   boardBoostValue: 9000
   requiredMeterToBoost: 25
+--- !u!114 &9198448339788072167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100548520344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b3e2f72e5d49d4c8c3870b8481a85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5657371100758450908
 GameObject:
   m_ObjectHideFlags: 0

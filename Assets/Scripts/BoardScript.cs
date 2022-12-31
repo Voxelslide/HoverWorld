@@ -133,11 +133,6 @@ public class BoardScript : MonoBehaviour
 			force = Mathf.Abs(1 / (hit.point.y - corner.position.y)) * floatMultiplier;
 			if (force > 100f) force = 100f;
 			boardRB.AddForceAtPosition(transform.up * force, corner.position, ForceMode.Acceleration);
-
-			if (force > 80f)
-			{
-				Debug.Log("Force: " + force);
-			}
 		}
 	}
 
