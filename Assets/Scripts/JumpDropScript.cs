@@ -10,12 +10,12 @@ public class JumpDropScript : MonoBehaviour
 	private ActionMeterScript boardActionMeter;
 
 	[SerializeField]
-	private float jumpValue = 10000;
+	private float jumpValue = 12000;
 	[SerializeField]
 	private int requiredMeterToJump = 25;
 
 	[SerializeField]
-	private float dropValue = 10000;
+	private float dropValue = 50000;
 	[SerializeField]
 	private int requiredMeterToDrop = 25;
 

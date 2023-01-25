@@ -8,8 +8,17 @@ public class BoardScript : MonoBehaviour
 	private Rigidbody boardRB;
 	private float gravity = -1f;
 	
+
+	[Header("Board Stats")]
+	[Tooltip("Board Speed Multiplier")]
 	[SerializeField]
-	private float speed = 250;
+	private float speedMultiplier = 250;
+	[SerializeField]
+	private float maxSpeed = 80;
+	[SerializeField]
+	[Tooltip("Acceleration value when velocity = 0")]
+	private float maxInitialAcceleration = 1;
+	[Tooltip("Turn Force")]
 	[SerializeField]
 	private float turnTorque = 750;
 	[SerializeField]
@@ -57,7 +66,13 @@ public class BoardScript : MonoBehaviour
 		}
 
 		//Forward/Backward Movement
-		boardRB.AddForce(forwardInput * Vector3.Scale(gameObject.transform.forward, new Vector3(1, 0, 1)) * speed, ForceMode.Acceleration);
+		//boardRB.AddForce(forwardInput * Vector3.Scale(gameObject.transform.forward, new Vector3(1, 0, 1)) * speed, ForceMode.Acceleration);
+		//boardRB.AddForce(ForwardForce(forwardInput), ForceMode.Acceleration);
+		boardRB.velocity = boardRB.velocity + ForwardForce(forwardInput);
+		//Vector3.Scale(gameObject.transform.forward, new Vector3(1, 0, 1)) //* speed
+
+		
+
 
 		//Turning/Torque
 		boardRB.AddTorque(torqueDirection * turnTorque * gameObject.transform.up, ForceMode.Force);
@@ -77,6 +92,7 @@ public class BoardScript : MonoBehaviour
 		{
 			Debug.Log("Boost Pad Duration: " + boostPadDuration);
 		}
+		Debug.Log(boardRB.velocity);
 	}
 
 
@@ -85,6 +101,26 @@ public class BoardScript : MonoBehaviour
 	{
 		forwardInput = ctx.ReadValue<float>();
 	}
+
+
+	private Vector3 ForwardForce(float forwardInput)
+	{
+
+
+		//Vector3 newVelocity = forwardInput * Vector3.Scale(gameObject.transform.forward,
+		//			new Vector3(boardRB.velocity.x + (boardRB.velocity.x/maxSpeed), 0, boardRB.velocity.z + (boardRB.velocity.z / maxSpeed))) * speedMultiplier;
+
+
+		float acceleration = maxInitialAcceleration * forwardInput;// * speedMultiplier;
+		acceleration *= Mathf.Clamp(10.0f - (boardRB.velocity.magnitude / maxSpeed), 0.0f, 10.0f);
+		return Vector3.Scale(gameObject.transform.forward, new Vector3(acceleration, 0, acceleration));
+
+		//10log(velocity.manitude+1)
+		//boardRB.velocity
+		//return newVelocity;
+	}
+
+
 
 	public void Turning(InputAction.CallbackContext ctx)
 	{

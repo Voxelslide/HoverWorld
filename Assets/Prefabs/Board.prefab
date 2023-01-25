@@ -433,6 +433,8 @@ GameObject:
   - component: {fileID: 5657371100548520327}
   - component: {fileID: 5657371100548520326}
   - component: {fileID: 5657371100548520345}
+  - component: {fileID: 5844692169653660690}
+  - component: {fileID: 7129753975043698507}
   - component: {fileID: 5657371100548520325}
   - component: {fileID: 5657371100548520322}
   - component: {fileID: 5657371100548520323}
@@ -530,6 +532,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &5844692169653660690
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100548520344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1.25
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0.45}
+--- !u!136 &7129753975043698507
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657371100548520344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1.25
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: -0.45}
 --- !u!54 &5657371100548520325
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -572,14 +602,6 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9c5547cf-bf30-4ea4-9bfc-d6f2a0f4f23d
-    m_ActionName: Board/New action
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ce31a3ce-5e20-495a-ac6a-89cb84b53552
-    m_ActionName: Board/FlyDown
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5657371100548520323}
         m_TargetAssemblyTypeName: BoardScript, Assembly-CSharp
@@ -613,9 +635,9 @@ MonoBehaviour:
     m_ActionName: Board/ForwardMovement1[/Keyboard/w,/Keyboard/s,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5657371100548520323}
-        m_TargetAssemblyTypeName: BoardScript, Assembly-CSharp
-        m_MethodName: BoardBoostCheck
+      - m_Target: {fileID: 1675595703322774916}
+        m_TargetAssemblyTypeName: BoostScript, Assembly-CSharp
+        m_MethodName: BoostCheck
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -708,7 +730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef168085d7ad394596b907c5d57a083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
+  speedMultiplier: 250
+  maxSpeed: 80
+  maxInitialAcceleration: 1
   turnTorque: 750
   rollTorque: 75
   rotationLimit: 80
